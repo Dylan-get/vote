@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generator.UserDao">
+  <resultMap id="BaseResultMap" type="generator.User">
+    <id column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="userName" jdbcType="VARCHAR" property="username" />
+    <result column="passwd" jdbcType="VARCHAR" property="passwd" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    userId, userName, passwd
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where userId = #{userid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where userId = #{userid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="userId" keyProperty="userid" parameterType="generator.User" useGeneratedKeys="true">
+    insert into user (userName, passwd)
+    values (#{username,jdbcType=VARCHAR}, #{passwd,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="userId" keyProperty="userid" parameterType="generator.User" useGeneratedKeys="true">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        userName,
+      </if>
+      <if test="passwd != null">
+        passwd,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="passwd != null">
+        #{passwd,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="generator.User">
+    update user
+    <set>
+      <if test="username != null">
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="passwd != null">
+        passwd = #{passwd,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where userId = #{userid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="generator.User">
+    update user
+    set userName = #{username,jdbcType=VARCHAR},
+      passwd = #{passwd,jdbcType=VARCHAR}
+    where userId = #{userid,jdbcType=INTEGER}
+  </update>
+</mapper>

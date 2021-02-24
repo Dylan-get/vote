@@ -3,12 +3,12 @@ CREATE TABLE user(
     userName varchar(255) NOT NULL,
     passwd varchar(255) NOT NULL
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
-CREATE TABLE votelist(
+CREATE TABLE voteList(
     voteId int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     voteName varchar(255) NOT NULL,
-    userId varchar(255) NOT NULL
+    userId int NOT NULL
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
-CREATE TABLE choicelist(
+CREATE TABLE choiceList(
     id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     voteId int NOT NULL,
     choiceName varchar(255) NOT NULL,
