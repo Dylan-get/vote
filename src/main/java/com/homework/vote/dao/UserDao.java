@@ -1,4 +1,5 @@
 package com.homework.vote.dao;
+
 import com.homework.vote.pojo.entity.User;
 
 public interface UserDao {

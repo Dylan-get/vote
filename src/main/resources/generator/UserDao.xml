@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="generator.UserDao">
-  <resultMap id="BaseResultMap" type="generator.User">
+<mapper namespace="com.homework.vote.dao.UserDao">
+  <resultMap id="BaseResultMap" type="com.homework.vote.pojo.entity.User">
     <id column="userId" jdbcType="INTEGER" property="userid" />
     <result column="userName" jdbcType="VARCHAR" property="username" />
     <result column="passwd" jdbcType="VARCHAR" property="passwd" />
@@ -19,11 +19,11 @@
     delete from user
     where userId = #{userid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" keyColumn="userId" keyProperty="userid" parameterType="generator.User" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="userId" keyProperty="userid" parameterType="com.homework.vote.pojo.entity.User" useGeneratedKeys="true">
     insert into user (userName, passwd)
     values (#{username,jdbcType=VARCHAR}, #{passwd,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" keyColumn="userId" keyProperty="userid" parameterType="generator.User" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="userId" keyProperty="userid" parameterType="com.homework.vote.pojo.entity.User" useGeneratedKeys="true">
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="username != null">
@@ -42,7 +42,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="generator.User">
+  <update id="updateByPrimaryKeySelective" parameterType="com.homework.vote.pojo.entity.User">
     update user
     <set>
       <if test="username != null">
@@ -54,7 +54,7 @@
     </set>
     where userId = #{userid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="generator.User">
+  <update id="updateByPrimaryKey" parameterType="com.homework.vote.pojo.entity.User">
     update user
     set userName = #{username,jdbcType=VARCHAR},
       passwd = #{passwd,jdbcType=VARCHAR}

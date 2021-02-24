@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="generator.VotelistDao">
-  <resultMap id="BaseResultMap" type="generator.Votelist">
+<mapper namespace="com.homework.vote.dao.VotelistDao">
+  <resultMap id="BaseResultMap" type="com.homework.vote.pojo.entity.Votelist">
     <id column="voteId" jdbcType="INTEGER" property="voteid" />
     <result column="voteName" jdbcType="VARCHAR" property="votename" />
     <result column="userId" jdbcType="INTEGER" property="userid" />
@@ -19,11 +19,11 @@
     delete from voteList
     where voteId = #{voteid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" keyColumn="voteId" keyProperty="voteid" parameterType="generator.Votelist" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="voteId" keyProperty="voteid" parameterType="com.homework.vote.pojo.entity.Votelist" useGeneratedKeys="true">
     insert into voteList (voteName, userId)
     values (#{votename,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" keyColumn="voteId" keyProperty="voteid" parameterType="generator.Votelist" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="voteId" keyProperty="voteid" parameterType="com.homework.vote.pojo.entity.Votelist" useGeneratedKeys="true">
     insert into voteList
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="votename != null">
@@ -42,7 +42,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="generator.Votelist">
+  <update id="updateByPrimaryKeySelective" parameterType="com.homework.vote.pojo.entity.Votelist">
     update voteList
     <set>
       <if test="votename != null">
@@ -54,7 +54,7 @@
     </set>
     where voteId = #{voteid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="generator.Votelist">
+  <update id="updateByPrimaryKey" parameterType="com.homework.vote.pojo.entity.Votelist">
     update voteList
     set voteName = #{votename,jdbcType=VARCHAR},
       userId = #{userid,jdbcType=INTEGER}

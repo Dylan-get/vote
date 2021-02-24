@@ -2,8 +2,6 @@ package com.homework.vote.pojo.entity;
 
 import java.io.Serializable;
 
-
-
 /**
  * choiceList
  * @author 
