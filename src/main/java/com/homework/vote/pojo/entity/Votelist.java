@@ -1,11 +1,14 @@
 package com.homework.vote.pojo.entity;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
 /**
  * voteList
  * @author 
  */
+@Data
 public class Votelist implements Serializable {
     private Integer voteid;
 
@@ -15,27 +18,5 @@ public class Votelist implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public Integer getVoteid() {
-        return voteid;
-    }
 
-    public void setVoteid(Integer voteid) {
-        this.voteid = voteid;
-    }
-
-    public String getVotename() {
-        return votename;
-    }
-
-    public void setVotename(String votename) {
-        this.votename = votename;
-    }
-
-    public Integer getUserid() {
-        return userid;
-    }
-
-    public void setUserid(Integer userid) {
-        this.userid = userid;
-    }
 }

@@ -1,2 +1,13 @@
-server:
-  port: 8080
+spring:
+  datasource:
+    username: root
+    password: 636623wht
+    url: jdbc:mysql://127.0.0.1:3306/vote?serverTimezone=GMT
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+  thymeleaf:
+    cache: false
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mybatis/mapper/**/*.xml
