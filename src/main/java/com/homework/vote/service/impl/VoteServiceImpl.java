@@ -2,8 +2,10 @@ package com.homework.vote.service.impl;
 
 import com.homework.vote.dao.ChoicelistDao;
 import com.homework.vote.dao.VotelistDao;
+import com.homework.vote.dao.VotelogDao;
 import com.homework.vote.pojo.entity.Choicelist;
 import com.homework.vote.pojo.entity.Votelist;
+import com.homework.vote.pojo.entity.Votelog;
 import com.homework.vote.service.VoteService;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,9 @@ public class VoteServiceImpl implements VoteService {
     @Resource
     ChoicelistDao choicelistDao;
 
+    @Resource
+    VotelogDao votelogDao;
+
     @Override
     public Integer voteAddService(Votelist votelist) {
         System.out.println("voteAdd");
@@ -29,5 +34,15 @@ public class VoteServiceImpl implements VoteService {
         System.out.println("voteChoiceAdd");
         Integer res=choicelistDao.insert(choicelist);
         return res;
+    }
+    @Override
+    public boolean userVote(Votelog votelog){
+
+
+        System.out.println("Uservote");
+        //验证是否重复投票
+        votelogDao.insert(votelog);
+        //在投票列表将对应的票数加1
+        return true;
     }
 }

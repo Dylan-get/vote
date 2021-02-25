@@ -14,3 +14,9 @@ CREATE TABLE choiceList(
     choiceName varchar(255) NOT NULL,
     num int NOT NULL
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
+CREATE TABLE voteLog(
+    logId int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    userId int NOT NULL,
+    voteId int NOT NULL,
+    choiceName varchar(255) NOT NULL
+)ENGINE=INNODB DEFAULT CHARSET=utf8;

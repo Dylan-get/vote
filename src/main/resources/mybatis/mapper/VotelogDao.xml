@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.homework.vote.dao.VotelogDao">
+  <resultMap id="BaseResultMap" type="com.homework.vote.pojo.entity.Votelog">
+    <id column="logId" jdbcType="INTEGER" property="logid" />
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="voteId" jdbcType="INTEGER" property="voteid" />
+    <result column="choiceName" jdbcType="VARCHAR" property="choicename" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    logId, userId, voteId, choiceName
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from voteLog
+    where logId = #{logid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from voteLog
+    where logId = #{logid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="logId" keyProperty="logid" parameterType="com.homework.vote.pojo.entity.Votelog" useGeneratedKeys="true">
+    insert into voteLog (userId, voteId, choiceName
+      )
+    values (#{userid,jdbcType=INTEGER}, #{voteid,jdbcType=INTEGER}, #{choicename,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="logId" keyProperty="logid" parameterType="com.homework.vote.pojo.entity.Votelog" useGeneratedKeys="true">
+    insert into voteLog
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="voteid != null">
+        voteId,
+      </if>
+      <if test="choicename != null">
+        choiceName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="voteid != null">
+        #{voteid,jdbcType=INTEGER},
+      </if>
+      <if test="choicename != null">
+        #{choicename,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.homework.vote.pojo.entity.Votelog">
+    update voteLog
+    <set>
+      <if test="userid != null">
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="voteid != null">
+        voteId = #{voteid,jdbcType=INTEGER},
+      </if>
+      <if test="choicename != null">
+        choiceName = #{choicename,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where logId = #{logid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.homework.vote.pojo.entity.Votelog">
+    update voteLog
+    set userId = #{userid,jdbcType=INTEGER},
+      voteId = #{voteid,jdbcType=INTEGER},
+      choiceName = #{choicename,jdbcType=VARCHAR}
+    where logId = #{logid,jdbcType=INTEGER}
+  </update>
+</mapper>
