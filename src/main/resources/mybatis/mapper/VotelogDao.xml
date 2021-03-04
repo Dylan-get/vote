@@ -16,6 +16,11 @@
     from voteLog
     where logId = #{logid,jdbcType=INTEGER}
   </select>
+  <select id="selectByUseidAndVoteid" resultType="com.homework.vote.pojo.entity.Votelog">
+    select
+    <include refid="Base_Column_List" />
+    from  votelog where userId=#{userid,jdbcType=INTEGER} and voteId=#{voteid,jdbcType=INTEGER}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from voteLog
     where logId = #{logid,jdbcType=INTEGER}

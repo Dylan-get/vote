@@ -82,7 +82,6 @@ public class voteController {
         votelog.setChoicename(choiceName);
 
         if(voteService.userVote(votelog)){
-
             return "投票成功";
         }else {
             return "投票失败";

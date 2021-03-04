@@ -40,9 +40,22 @@ public class VoteServiceImpl implements VoteService {
 
 
         System.out.println("Uservote");
+        boolean res=true;
         //验证是否重复投票
-        votelogDao.insert(votelog);
-        //在投票列表将对应的票数加1
-        return true;
+        if(votelogDao.selectByUseidAndVoteid(votelog.getUserid(),votelog.getVoteid())!=null){
+            res=false;
+        }
+        if(res){
+
+            votelogDao.insert(votelog);
+            System.out.println("票数+1");
+            choicelistDao.updateByVoteIdAndChoiceName(votelog.getVoteid(),votelog.getChoicename());
+            return true;
+        }else{
+            System.out.println("已经投票");
+            System.out.println("userid\t");
+            System.out.println(votelogDao.selectByUseidAndVoteid(votelog.getUserid(),votelog.getVoteid()).getUserid());
+        return false;
+        }
     }
 }

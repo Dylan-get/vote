@@ -68,9 +68,15 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.homework.vote.pojo.entity.Choicelist">
     update choiceList
-    set voteId = #{voteid,jdbcType=INTEGER},
+    set voteId = #{voteid,jdbcType=INTEGER},s
       choiceName = #{choicename,jdbcType=VARCHAR},
       num = #{num,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+    <update id="updateByVoteIdAndChoiceName">
+      update  choiceList
+      set num=num+1
+      where voteId=#{voteid,jdbcType=INTEGER} and choiceName=#{choicename,jdbcType=VARCHAR}
+    </update>
 </mapper>

@@ -11,6 +11,7 @@ public interface VotelogDao {
 
     Votelog selectByPrimaryKey(Integer logid);
 
+    Votelog selectByUseidAndVoteid(Integer userid,Integer voteid);
     int updateByPrimaryKeySelective(Votelog record);
 
     int updateByPrimaryKey(Votelog record);

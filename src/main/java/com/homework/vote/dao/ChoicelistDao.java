@@ -14,4 +14,5 @@ public interface ChoicelistDao {
     int updateByPrimaryKeySelective(Choicelist record);
 
     int updateByPrimaryKey(Choicelist record);
+    int updateByVoteIdAndChoiceName(Integer voteid,String choicename);
 }
